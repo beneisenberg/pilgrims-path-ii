@@ -47,36 +47,6 @@ The game deliberately drills the two classic traps: **529 holds two events**, an
 
 ---
 
-## Wardrobe unlocks
-
-Chapter outfits are earned by completing story chapters. The rest:
-
-| Item | How to earn it |
-|---|---|
-| 🧢 Ball Cap | Reach 500 XP |
-| 👱 Beach-Blonde Wig | Score 2,000+ in Saints & Scholars |
-| 🎩 Top Hat | Reach Bishop rank (2,800 XP) |
-| 🎓 John Calvin's Cap | Finish the story — reach Constance |
-| 🤵 Tuxedo | Earn an A on THE FINAL |
-| 🩱 Pink Polka-Dot Swimsuit | Flee a boss battle |
-| 🗡️ Sting | Defeat three different bosses |
-| 💍 The One Ring | Defeat the Examiner |
-
-Accessories like the Pilgrim's Staff, Chronicle Scroll and Gilded Cross arrive through the ten achievements.
-
----
-
-## Deploying to GitHub Pages
-
-1. Create a new repository (e.g. `pilgrims-path-2`).
-2. Upload `index.html`, `README.md`, and `.nojekyll` to the repository root.
-3. **Settings → Pages →** deploy from the `main` branch, `/ (root)` folder.
-4. The game goes live at `https://<username>.github.io/pilgrims-path-2/` within a minute or two.
-
-`.nojekyll` tells GitHub Pages to serve the file as-is rather than running it through Jekyll.
-
----
-
 ## Notes
 
 **File size.** `index.html` is ~6 MB because both music tracks are base64-embedded inside it. That's well within GitHub's limits (the warning threshold is 50 MB), and it keeps the game a single portable file. First load pulls the whole thing; after that it's cached.
@@ -89,12 +59,6 @@ To swap the tracks, replace the base64 payloads in the `MUSIC` constant near the
 base64 -w0 new-map.mp3      # paste after "data:audio/mpeg;base64," for MUSIC.map
 base64 -w0 new-battle.mp3   # same for MUSIC.battle
 ```
-
-96 kbps mono keeps the file small. Empty payloads are handled gracefully — the game simply runs with sound effects only.
-
-**Saves.** Progress is stored in the browser under the key `pilgrim-save-2`, separate from the v1 game, and saves automatically after every scene, answer, and unlock. Clearing site data resets progress.
-
-**Before publishing:** confirm the music tracks' license permits public redistribution, since they're embedded in a publicly served file.
 
 ---
 
@@ -109,8 +73,6 @@ Invariants worth knowing before editing:
 - Every question needs exactly three wrong answers.
 - **Answer options must not give themselves away**: no ALL-CAPS emphasis inside options, and the correct answer must not be conspicuously longer than the decoys. Elaborate the wrong answers to match rather than trimming the right one into uselessness.
 - Timeline spacing is driven by `TL_PPY` (pixels per year); a wider date range needs a smaller value.
-
-The v1 repository contains an `UPDATING.md` handoff guide with the full schema reference; the notes above supersede it wherever the two differ.
 
 ---
 
